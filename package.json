@@ -1,0 +1,42 @@
+{
+  "name": "snabbdom-tsx",
+  "version": "0.1.0",
+  "description": "Transforms Typescript TSX into Snabbdom Virtual DOM",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "npm run-script lint && tsc",
+    "clean": "rimraf lib",
+    "lint": "tslint \"**/*.ts\" -e \"lib/**\" -e \"node_modules/**\"",
+    "prepublish": "npm run-script clean && npm run-script build",
+    "preversion": "npm run-script clean && npm run-script build",
+    "test": "npm run-script build && mocha --opts test/mocha.opts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvivi/snabbdom-tsx.git"
+  },
+  "keywords": [
+    "snabbdom",
+    "virtual-dom",
+    "typescript",
+    "tsx",
+    "jsx"
+  ],
+  "author": "Alvaro Vilanova Vidal <alvivi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alvivi/snabbdom-tsx/issues"
+  },
+  "homepage": "https://github.com/alvivi/snabbdom-tsx#readme",
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.32",
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.4",
+    "ts-node": "^1.6.1",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.6"
+  }
+}
