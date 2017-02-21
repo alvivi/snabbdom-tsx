@@ -1,16 +1,17 @@
 {
   "name": "snabbdom-tsx",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Transforms Typescript TSX into Snabbdom Virtual DOM",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "npm run-script lint && tsc",
+    "build": "npm run lint && tsc",
     "clean": "rimraf lib",
     "lint": "tslint \"**/*.ts\" -e \"lib/**\" -e \"node_modules/**\"",
-    "prepublish": "npm run-script clean && npm run-script build",
-    "preversion": "npm run-script clean && npm run-script build",
-    "test": "npm run-script build && mocha --opts test/mocha.opts"
+    "preinstall": "npm run clean && npm run build",
+    "prepublish": "npm run clean && npm run build",
+    "preversion": "npm run clean && npm run build",
+    "test": "npm run build && mocha --opts test/mocha.opts"
   },
   "repository": {
     "type": "git",
@@ -33,10 +34,10 @@
     "@types/chai": "^3.4.34",
     "@types/mocha": "^2.2.32",
     "chai": "^3.5.0",
-    "mocha": "^3.1.2",
-    "rimraf": "^2.5.4",
-    "ts-node": "^1.6.1",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.6.0",
+    "ts-node": "^1.7.3",
     "tslint": "^3.15.1",
-    "typescript": "^2.0.6"
+    "typescript": "^2.1.6"
   }
 }

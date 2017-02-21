@@ -1879,7 +1879,7 @@ declare namespace Snabbdom {
 }
 
 declare namespace JSX {
-  type Element = Snabbdom.VNode<any>
+  type Element = Snabbdom.VNode<any>;
 
   // Snabbdom.DOM
 
