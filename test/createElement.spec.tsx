@@ -1,4 +1,5 @@
 
+import 'mocha';
 import { expect } from 'chai';
 import { VNode } from '../src';
 import * as Snabbdom from '../src';
@@ -79,5 +80,16 @@ describe('createElement', () => {
     expect(secondFirstChild.sel).to.be.undefined;
     expect(secondFirstChild.text).to.be.an('string');
     expect(secondFirstChild.text).to.be.equal('World');
+  });
+
+  it('should handle node properties', () => {
+    const node = <input type="checkbox"></input>
+    expect(node).to.be.an('object');
+    expect(node.sel).to.be.equal('input');
+    expect(node.text).to.be.undefined;
+    expect(node.data).to.be.an('object');
+    expect((node.data || {}).props).be.an('object');
+    expect(((node.data || {}).props || {}).type).be.an('string');
+    expect(((node.data || {}).props || {}).type).be.equal('checkbox');
   });
 });

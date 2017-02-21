@@ -14,7 +14,7 @@ export function createElement(type: string, props?: any, ...children: (VNode | s
   return {
     children: children.map(child =>
       (typeof child === 'string') ? stringToVNode(child) : child),
-    data: {},
+    data: { props: props },
     sel: selectorToString(selector)
   };
 }

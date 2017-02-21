@@ -1,6 +1,6 @@
 {
   "name": "snabbdom-tsx",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Transforms Typescript TSX into Snabbdom Virtual DOM",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
