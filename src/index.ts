@@ -14,9 +14,21 @@ export function createElement(type: string, props?: any, ...children: (VNode | s
   return {
     children: children.map(child =>
       (typeof child === 'string') ? stringToVNode(child) : child),
-    data: { props: props },
+    data: dataFromReactProps(props),
     sel: selectorToString(selector)
   };
+}
+
+// NOTE: this function uses in place modification of the props parameter. Maybe
+//       is better to use copy of the props object.
+function dataFromReactProps(props?: any): VNodeData {
+  let data: VNodeData = {};
+  data.props = props;
+  if ((data.props || {}).style) {
+    data.style = data.props.style;
+    delete data.props.style;
+  }
+  return data;
 }
 
 function selectorFromReactElement(type: string, props?: any): Selector {

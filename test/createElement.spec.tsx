@@ -14,6 +14,11 @@ describe('createElement', () => {
     expect(node.children).to.be.empty;
   });
 
+  it('should always create a data field', () => {
+    const node = <div></div>;
+    expect(node.data).to.be.an('object');
+  });
+
   it('should handle tags id', () => {
     const node = <div id="foo"></div>;
     expect(node).to.be.an('object');
@@ -83,13 +88,28 @@ describe('createElement', () => {
   });
 
   it('should handle node properties', () => {
-    const node = <input type="checkbox"></input>
+    const node = <input type="checkbox" />
     expect(node).to.be.an('object');
     expect(node.sel).to.be.equal('input');
     expect(node.text).to.be.undefined;
     expect(node.data).to.be.an('object');
-    expect((node.data || {}).props).be.an('object');
-    expect(((node.data || {}).props || {}).type).be.an('string');
-    expect(((node.data || {}).props || {}).type).be.equal('checkbox');
+    expect((node.data || {}).props).to.be.an('object');
+    expect(((node.data || {}).props || {}).type).to.be.an('string');
+    expect(((node.data || {}).props || {}).type).to.be.equal('checkbox');
+  });
+
+  it('should handle style properties', () => {
+    const node = <input type="checkbox" style={{ backgroundColor: 'green' }} />
+    expect(node).to.be.an('object');
+    expect(node.sel).to.be.equal('input');
+    expect(node.text).to.be.undefined;
+    expect(node.data).to.be.an('object');
+    expect((node.data || {}).props).to.be.an('object');
+    expect(((node.data || {}).props || {}).type).to.be.an('string');
+    expect(((node.data || {}).props || {}).type).to.be.equal('checkbox');
+    expect(((node.data || {}).props || {}).style).to.be.undefined;
+    expect((node.data || {}).style).to.be.an('object');
+    expect(((node.data || {}).style || {}).backgroundColor).to.be.a('string');
+    expect(((node.data || {}).style || {}).backgroundColor).be.equal('green');
   });
 });
